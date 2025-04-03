@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Response
-from  ..supabaseClient import supabase
+from fastapi import APIRouter, Response, HTTPException
+from  ..supabaseClient import supabase, checkAuth
 from ..models import auth
 
 router = APIRouter(
@@ -39,5 +39,6 @@ async def sign_out():
   return supabase.auth.sign_out()
 
 @router.get("/me")
-async def user_info():
-  return supabase.auth.get_user()
+async def user_info(response:Response):
+  checkAuth()
+  supabase.auth.get_user()
