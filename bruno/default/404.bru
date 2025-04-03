@@ -1,0 +1,11 @@
+meta {
+  name: 404
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{host}}:{{port}}/test-error-404
+  body: none
+  auth: inherit
+}
