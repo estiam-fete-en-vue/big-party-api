@@ -9,4 +9,4 @@ async def test():
 
 @router.get("*")
 async def error_404():
-    raise HTTPException(status_code=404, detail='not found')
+  raise HTTPException(status_code=404, detail='not found')
