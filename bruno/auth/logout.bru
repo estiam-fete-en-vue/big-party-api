@@ -1,0 +1,11 @@
+meta {
+  name: logout
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{protocol}}://{{host}}:{{port}}/auth/logout
+  body: none
+  auth: inherit
+}

@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "big-party-api",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

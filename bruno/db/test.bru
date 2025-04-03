@@ -1,0 +1,17 @@
+meta {
+  name: test
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{protocol}}://{{host}}:{{port}}/db/test
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "test": "my unique data"
+  }
+}
