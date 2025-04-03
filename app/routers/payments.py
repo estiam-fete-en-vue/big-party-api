@@ -11,6 +11,8 @@ router = APIRouter(
 )
 
 stripe.api_key = os.environ.get("STRIPE_API_KEY")
+stripe.sucess_url= os.environ.get("STRIPE_SUCESS_URL")
+stripe.cancel_url= os.environ.get("STRIPE_CANCEL_URL")
 
 @router.get("/create-checkout-session")
 async def create_checkout_session():
@@ -20,7 +22,7 @@ async def create_checkout_session():
         "price_data": {
           "currency": "eur",
           "product_data": {
-            "name": "AI previews"
+            "name": "Ai previews"
           },
           "unit_amount": 100
         },
@@ -28,8 +30,8 @@ async def create_checkout_session():
       }
     ],
     mode="payment",
-    success_url="http://localhost:8000/docs",
-    cancel_url="http://localhost:8000/docs"
+    success_url=stripe.sucess_url,
+    cancel_url=stripe.cancel_url
   )
 
   return RedirectResponse(session.url, status_code=303)

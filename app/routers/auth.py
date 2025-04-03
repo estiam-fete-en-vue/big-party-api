@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Response, HTTPException
+from fastapi import APIRouter, Response
 from  ..supabaseClient import supabase, checkAuth
 from ..models import auth
 
@@ -7,7 +7,7 @@ router = APIRouter(
 )
 
 @router.post("/signup", status_code=201)
-async def sign_up(credentials:auth.credentials, response:Response):
+async def sign_up(credentials:auth.Credentials, response:Response):
   try:
     response.body = supabase.auth.sign_up(
       {
@@ -21,7 +21,7 @@ async def sign_up(credentials:auth.credentials, response:Response):
   return response.body
 
 @router.post("/login")
-async def sign_in(credentials:auth.credentials, response:Response):
+async def sign_in(credentials:auth.Credentials, response:Response):
   try:
     response.body = supabase.auth.sign_in_with_password(
       {
